@@ -1,4 +1,3 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -56,14 +55,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
       ]);
     } else {
-      plugins = plugins.concat([
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new CleanWebpackPlugin(['build'], {
-          root: path.join(__dirname, '../'),
-          verbose: true,
-          dry: false,
-        }),
-      ]);
+      plugins = plugins.concat([new webpack.optimize.OccurrenceOrderPlugin()]);
     }
 
     if (isESLintEnabled) {

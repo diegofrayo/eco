@@ -85,12 +85,17 @@ const buildAssets = () => {
     .pipe(gulp.dest(`${settings.dest_path}/fonts`));
 };
 
+const clean = () => {
+  return gulp.src('./build', { read: false, allowEmpty: true }).pipe(g.clean());
+};
+
 // -------------------------------
 // --------- Build Tasks ---------
 gulp.task('build-css', buildCSS);
 gulp.task('build-js', buildJS);
 gulp.task('build-html', buildHTML);
 gulp.task('build-assets', buildAssets);
+gulp.task('clean', clean);
 
 // ------------------------------
 // --------- Main Tasks ---------
