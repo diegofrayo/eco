@@ -61,7 +61,15 @@ const ButtonElement = styled.button(
       `,
       default: '',
     })}
-    ${utils.ifProp(props.loading === 'true', 'transform: translateY(4px);')}
+    ${utils.if(props.loading === 'true', {
+      true: `
+        cursor: progress;
+        transform: translateY(4px);
+      `,
+      false: `
+        cursor: pointer;
+      `,
+    })}
   `,
 );
 
