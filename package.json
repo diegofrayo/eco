@@ -29,9 +29,9 @@
   },
   "scripts": {
     "start:all": "cross-env gulp build && node config/webpack.config.dev.server.js",
-    "start": "cross-env NODE_ENV=development && npm run link-deps && npm run start:all",
+    "start": "cross-env npm run link-deps && npm run start:all",
     "build:all": "cross-env gulp clean && webpack --mode production && gulp build --prod",
-    "build": "cross-env NODE_ENV=production DISABLE_LINT=true && npm run build:all",
+    "build": "cross-env DISABLE_LINT=true && npm run build:all",
     "lint": "eslint -c eslintrc.json src/**/*.{js,jsx}",
     "link-deps": "cross-env npm link @diegofrayo/styles && npm link @diegofrayo/form && npm link @diegofrayo/vlt && npm link @diegofrayo/eslint-config"
   },
@@ -46,10 +46,13 @@
     "babel-plugin-transform-remove-console": "^6.9.4",
     "browser-sync": "^2.26.7",
     "connect-history-api-fallback": "^1.6.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^3.2.0",
+    "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.2.1",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^6.0.0",
@@ -63,8 +66,11 @@
     "node-cmd": "^3.0.0",
     "prettier": "^1.18.2",
     "style-loader": "^0.23.1",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.8.0",
-    "webpack-hot-middleware": "^2.25.0"
+    "webpack-hot-middleware": "^2.25.0",
+    "yargs": "^13.3.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
@@ -74,10 +80,7 @@
     "@emotion/styled": "^10.0.15",
     "@hot-loader/react-dom": "^16.8.6",
     "color": "^3.1.2",
-    "cross-env": "^5.2.0",
-    "dotenv": "^8.0.0",
     "emotion-theming": "^10.0.14",
-    "gulp": "^4.0.2",
     "history": "^4.9.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
@@ -86,10 +89,7 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "styled-system": "^5.0.21",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
-    "whatwg-fetch": "^3.0.0",
-    "yargs": "^13.3.0"
+    "whatwg-fetch": "^3.0.0"
   },
   "engines": {
     "node": ">=8.15.1"
