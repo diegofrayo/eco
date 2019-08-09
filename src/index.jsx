@@ -22,15 +22,6 @@ target.setAttribute(
     .join(';'),
 );
 
-// document.body.appendChild(target);
 ReactDOM.render(<Root />, target);
-
-// if (module.hot) {
-//   module.hot.accept('./pages/index.jsx', () => {
-//     // eslint-disable-next-line global-require
-//     const NextApp = require('./pages/index.jsx').default;
-//     ReactDOM.render(<NextApp />, target);
-//   });
-// }
 
 export default hot(Root);

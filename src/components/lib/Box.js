@@ -4,12 +4,18 @@ import styled from '@emotion/styled';
 const flex = ({
   'align-x': alignXProp,
   'align-y': alignYProp,
+  'grow-x': growXProp,
+  'grow-y': growYProp,
+  grow: growProp,
   align: alignProp,
   dir,
 }) => {
   let alignX = '';
   let alignY = '';
   let align = '';
+  let growX = '';
+  let growY = '';
+  let grow = '';
   const display = 'display: flex;';
   const direction = `flex-direction: ${dir || 'column'};`;
 
@@ -19,6 +25,25 @@ const flex = ({
 
   if (alignYProp) {
     alignY = `align-items: ${alignYProp};`;
+  }
+
+  if (growXProp) {
+    growX = `width: 100%;`;
+  }
+
+  if (growYProp) {
+    growY = `
+      flex: 1;
+      height: 100%;
+    `;
+  }
+
+  if (growProp) {
+    grow = `
+      flex: 1;
+      height: 100%;
+      width: 100%;
+    `;
   }
 
   if (alignProp === 'center') {
@@ -32,14 +57,15 @@ const flex = ({
     align = 'justify-content: flex-end';
   }
 
-  // console.log({ alignX, alignY, align, direction, display });
-
   return `
     ${alignX}
     ${alignY}
     ${align}
     ${direction}
     ${display}
+    ${growX}
+    ${growY}
+    ${grow}
   `;
 };
 

@@ -1,33 +1,34 @@
 import PropTypes from 'prop-types';
-import { styled } from '@diegofrayo/styles';
+import { styled, keyMirror } from '@diegofrayo/styles';
 
-const TYPE = {
-  VERTICAL: 0,
-  HORIZONTAL: 1,
-};
+const Type = keyMirror(['horizontal', 'vertical']);
 
 const Separator = styled.section(
   ({ props, utils }) => `
-    display: ${props.type === TYPE.HORIZONTAL ? 'inline-block' : 'block'};
-    height: 1px;
-    ${utils.if(
-      props.type === TYPE.VERTICAL,
-      utils.marginY(props.size),
-      utils.marginX(props.size),
-    )}
+    display: ${props.type === Type.vertical ? 'inline-block' : 'block'};
+    ${utils.if(props.type === Type.horizontal, {
+      true: `
+        height: 1px;
+        ${utils.marginY(props.size)}
+      `,
+      false: `
+        width: 1px;
+        ${utils.marginX(props.size)}
+      `,
+    })}
   `,
 );
 
-Separator.TYPE = TYPE;
+Separator.type = Type;
 
 Separator.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  type: PropTypes.oneOf(Object.values(Separator.TYPE)),
+  type: PropTypes.oneOf(Object.values(Separator.type)),
 };
 
 Separator.defaultProps = {
-  size: 2,
-  type: Separator.TYPE.VERTICAL,
+  size: 0,
+  type: Separator.type.horizontal,
 };
 
 export default Separator;

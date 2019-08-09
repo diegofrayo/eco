@@ -3,34 +3,26 @@ import { vlt } from '@diegofrayo/vlt';
 export default {
   email: {
     type: 'string',
+    errorMessage: 'Type a valid email',
+    defaultValue: 'eco-test-user@gmail.com',
     handlers: {
       isValid: value => {
-        const isValid = vlt()
+        return vlt()
           .email()
           .validate(value);
-
-        if (isValid) {
-          return { email: '', password: '' };
-        }
-
-        return { email: 'wrong email', password: 'wrong password' };
       },
     },
   },
   password: {
     type: 'string',
+    errorMessage: 'Type a valid password',
+    defaultValue: '12345',
     handlers: {
       isValid: value => {
-        const isValid = vlt()
+        return vlt()
           .string()
           .minLength(5)
           .validate(value);
-
-        if (isValid) {
-          return isValid;
-        }
-
-        return 'wrong password';
       },
     },
   },
