@@ -1,26 +1,20 @@
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const webpackConfig = require('./config/webpack.config.js');
 
-module.exports = (env = {}) => {
+module.exports = (env = process.env) => {
   const ENVIRONMENT = env.NODE_ENV || 'development';
   const isDevelopmentEnv = ENVIRONMENT === 'development';
-  const isESLintEnabled = !env.DISABLE_LINT;
-  let settings = {};
-
-  try {
-    settings = JSON.parse(fs.readFileSync('./config.app.json', 'utf8'))[ENVIRONMENT];
-  } catch (error) {
-    console.log(error);
-    process.exit();
-  }
+  const isESLintDisabled = env.DISABLE_LINT === 'true';
+  const settings = { environment: ENVIRONMENT };
 
   const config = {
     context: __dirname,
     entry: webpackConfig.entry(isDevelopmentEnv),
     plugins: webpackConfig.plugins({
       isDevelopmentEnv,
-      isESLintEnabled,
+      isESLintDisabled,
       settings,
     }),
     resolve: {
@@ -35,7 +29,7 @@ module.exports = (env = {}) => {
       rules: [
         webpackConfig.babel(isDevelopmentEnv),
         webpackConfig.styles(),
-        webpackConfig.eslint(isESLintEnabled),
+        webpackConfig.eslint(isESLintDisabled),
       ],
     },
     ...webpackConfig.config(isDevelopmentEnv),

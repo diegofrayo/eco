@@ -19,7 +19,7 @@ module.exports = {
       mode: 'production',
       output: {
         filename: 'bundle.js',
-        path: path.join(__dirname, '../build'),
+        path: path.join(__dirname, '../build/js'),
       },
     };
   },
@@ -46,7 +46,7 @@ module.exports = {
     };
   },
 
-  plugins: ({ isDevelopmentEnv, isESLintEnabled, settings }) => {
+  plugins: ({ isDevelopmentEnv, isESLintDisabled, settings }) => {
     let plugins = [new webpack.DefinePlugin({ APP_SETTINGS: JSON.stringify(settings) })];
 
     if (isDevelopmentEnv) {
@@ -58,7 +58,7 @@ module.exports = {
       plugins = plugins.concat([new webpack.optimize.OccurrenceOrderPlugin()]);
     }
 
-    if (isESLintEnabled) {
+    if (!isESLintDisabled) {
       plugins.unshift(
         new webpack.LoaderOptionsPlugin({
           options: {
@@ -104,8 +104,8 @@ module.exports = {
     return babelConfig;
   },
 
-  eslint: isESLintEnabled => {
-    if (isESLintEnabled) {
+  eslint: isESLintDisabled => {
+    if (!isESLintDisabled) {
       return {
         exclude: /(node_modules|config)/,
         include: /(src)/,
