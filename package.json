@@ -2,7 +2,7 @@
   "name": "eco",
   "version": "1.0.0",
   "description": "React web application",
-  "homepage": "https://github.com/diegofrayo/eco#readme",
+  "homepage": "https://eco-armenia.netlify.com",
   "license": "MIT",
   "main": "src/index.jsx",
   "private": true,
@@ -32,7 +32,7 @@
     "start": "cross-env npm run link-deps && npm run start:all",
     "build:all": "cross-env gulp clean && webpack --mode production && gulp build --prod",
     "build": "cross-env DISABLE_LINT=true && npm run build:all",
-    "lint": "eslint -c eslintrc.json src/**/*.{js,jsx}",
+    "lint": "eslint -c eslintrc.json 'src/**/*.{js,jsx}'",
     "link-deps": "cross-env npm link @diegofrayo/styles && npm link @diegofrayo/form && npm link @diegofrayo/vlt && npm link @diegofrayo/eslint-config"
   },
   "devDependencies": {
