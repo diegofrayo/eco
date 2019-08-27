@@ -44,8 +44,8 @@ Input.defaultProps = {
 
 const Container = styled.section(
   ({ theme, props }) => `
-    color: ${props.error ? theme.color.input.error : 'black'};
-    transition: all 0.8s;
+    color: ${props.error ? theme.colors.red : 'black'};
+    transition: all 0.5s;
     width: 100%;
   `,
 );
@@ -60,7 +60,7 @@ const Label = styled.p(
 
 Label.Asterisk = styled.span(
   ({ theme, props }) => `
-    color: ${theme.color.input.error};
+    color: ${theme.colors.red};
     display: ${props.visible ? 'inline-block' : 'none'};
     margin-left: ${theme.space[0]}px;
   `,
@@ -68,11 +68,10 @@ Label.Asterisk = styled.span(
 
 const InputContainer = styled(Box)(
   ({ theme, props }) => `
-    background-color: ${props.error ? theme.color.input.error : theme.color.input.normal};
+    background-color: ${props.error ? theme.colors.red : theme.colors.gray};
     border-radius: 5px;
-    border: 1px solid ${props.error ? theme.color.input.error : theme.color.input.normal};
+    border: 1px solid ${props.error ? theme.colors.red : theme.colors.gray};
     overflow: hidden;
-    transition: all 0.8s;
     width: 100%;
   `,
 );
@@ -90,12 +89,10 @@ const IconContainer = styled(Box)(
 const InputElement = styled.input(
   ({ theme, props }) => `
     border: 0;
-    border-left: 1px solid ${
-      props.error ? theme.color.input.error : theme.color.input.normal
-    };
+    border-left: 1px solid ${props.error ? theme.colors.red : theme.colors.gray};
     color: inherit;
     height: 40px;
-    outline-color: ${props.error ? theme.color.input.error : theme.color.input.normal};
+    outline-color: ${props.error ? theme.colors.red : theme.colors.gray};
     padding: ${theme.space[0]}px ${theme.space[2]}px;
     width: 100%;
   `,

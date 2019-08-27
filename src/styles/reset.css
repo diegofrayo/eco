@@ -75,6 +75,10 @@ a:hover {
   text-decoration: none;
 }
 
+a * {
+  cursor: pointer;
+}
+
 /*
 Extra small devices Phones
 @media screen and (max-width: 767px) {}

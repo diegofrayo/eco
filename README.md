@@ -8,8 +8,8 @@ React web application
 
 ## Stack
 
-- React ^16.8.6
-- React router ^5.0.1
+- React `16.9.0`
+- React router `^5.0.1`
 - Emotion and Styled system
 - Webpack and Gulp
 - Prettier and ESLint

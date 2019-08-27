@@ -8,7 +8,7 @@ import { Routes, redirect } from 'routing';
 const Root = function Root({ history }) {
   componentDidMount(() => {
     setTimeout(() => {
-      redirect(Routes.SIGN_IN, history);
+      redirect(Routes.HOME, history);
     }, 1000);
   });
 

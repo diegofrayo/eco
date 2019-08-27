@@ -78,9 +78,10 @@ SignIn.propTypes = {
 // ----- Components -----
 
 const Container = styled(Box)(
-  () => `
+  ({ theme }) => `
     background: linear-gradient(0deg, rgba(193,255,224,1) 0%, rgba(238,255,239,0.45281862745098034) 100%);
     background: rgb(193,255,224);
+    padding: ${theme.space[2]}px;
     overflow: auto;
   `,
 );
@@ -107,10 +108,11 @@ const Content = styled(Box)(
 
 const Title = styled.h1(
   ({ theme }) => `
-    color: ${theme.color.green};
-    font-size: ${theme.fontSizes[6]}px;
+    color: ${theme.colors.green};
+    font-size: ${theme.fontSizes[6]};
     font-weight: 400;
     margin-bottom: ${theme.space[3]}px;
+    text-align: center;
   `,
 );
 

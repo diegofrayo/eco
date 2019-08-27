@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Box, Text } from 'components/lib';
+
 class ErrorBoundary extends React.Component {
   static getDerivedStateFromError() {
     return { hasError: true };
@@ -8,7 +10,7 @@ class ErrorBoundary extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { hasError: false };
+    this.state = { hasError: false, error: '' };
   }
 
   componentDidCatch(error, info) {
@@ -18,16 +20,22 @@ class ErrorBoundary extends React.Component {
     console.error('info');
     console.log(info);
     console.groupEnd('componentDidCatch');
+    this.setState({ error });
   }
 
   render() {
-    // eslint-disable-next-line react/destructuring-assignment
-    if (this.state.hasError) {
-      return <section>Error!</section>;
+    const { children } = this.props;
+    const { error, hasError } = this.state;
+
+    if (hasError) {
+      return (
+        <Box align="center" grow>
+          <Text>{error}</Text>
+        </Box>
+      );
     }
 
-    // eslint-disable-next-line react/destructuring-assignment
-    return this.props.children;
+    return children;
   }
 }
 

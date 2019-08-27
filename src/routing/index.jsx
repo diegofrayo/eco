@@ -7,14 +7,16 @@ import Home from 'pages/Home';
 
 const Routes = {
   ROOT: '/',
-  HOME: '/home',
-  SIGN_IN: '/sign-in',
+  HOME: '/mi-perfil',
+  LOCATION_ECOALIADOS: '/eco-aliados',
+  SIGN_IN: '/iniciar-sesion',
 };
 
 const Router = () => (
   <Switch>
     <Route exact path={Routes.ROOT} component={Root} />
     <Route exact path={Routes.HOME} component={Home} />
+    <Route exact path={Routes.LOCATION_ECOALIADOS} component={Home} />
     <Route exact path={Routes.SIGN_IN} component={SignIn} />
   </Switch>
 );

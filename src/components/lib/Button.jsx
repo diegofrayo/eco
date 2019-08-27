@@ -52,9 +52,9 @@ const ButtonElement = styled.button(
     width: 100%;
     ${utils.switch(props.theme, {
       [Button.theme.primary]: `
-        background: ${theme.color.green};
-        background: radial-gradient(circle, ${theme.color.green} 0%, ${utils.lighten(
-        theme.color.green,
+        background: ${theme.colors.green};
+        background: radial-gradient(circle, ${theme.colors.green} 0%, ${utils.lighten(
+        theme.colors.green,
         0.1,
       )} 75%);
         color: white;

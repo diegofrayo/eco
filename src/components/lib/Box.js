@@ -1,14 +1,17 @@
-import { color, layout, space } from 'styled-system';
+import { color, layout, space, border as borderSS, flexbox, shadow } from 'styled-system';
 import styled from '@emotion/styled';
 
-const flex = ({
+const customFlex = ({
   'align-x': alignXProp,
   'align-y': alignYProp,
   'grow-x': growXProp,
   'grow-y': growYProp,
-  grow: growProp,
   align: alignProp,
-  dir,
+  border: borderProp,
+  dir = 'column',
+  grow: growProp,
+  size: sizeProp,
+  wrap,
 }) => {
   let alignX = '';
   let alignY = '';
@@ -16,15 +19,28 @@ const flex = ({
   let growX = '';
   let growY = '';
   let grow = '';
+  let size = '';
+  const border = borderProp ? 'border: 1px solid red;' : '';
+  const flexWrap = wrap ? 'flex-wrap: wrap;' : '';
   const display = 'display: flex;';
-  const direction = `flex-direction: ${dir || 'column'};`;
+  const direction = `flex-direction: ${dir};`;
 
-  if (alignXProp) {
-    alignX = `justify-content: ${alignXProp};`;
-  }
+  if (dir === 'column') {
+    if (alignXProp) {
+      alignX = `align-items: ${alignXProp};`;
+    }
 
-  if (alignYProp) {
-    alignY = `align-items: ${alignYProp};`;
+    if (alignYProp) {
+      alignY = `justify-content: ${alignYProp};`;
+    }
+  } else {
+    if (alignXProp) {
+      alignX = `justify-content: ${alignXProp};`;
+    }
+
+    if (alignYProp) {
+      alignY = `align-items: ${alignYProp};`;
+    }
   }
 
   if (growXProp) {
@@ -33,7 +49,6 @@ const flex = ({
 
   if (growYProp) {
     growY = `
-      flex: 1;
       height: 100%;
     `;
   }
@@ -43,6 +58,13 @@ const flex = ({
       flex: 1;
       height: 100%;
       width: 100%;
+    `;
+  }
+
+  if (sizeProp) {
+    size = `
+      height: ${sizeProp}px;
+      width: ${sizeProp}px;
     `;
   }
 
@@ -61,18 +83,24 @@ const flex = ({
     ${alignX}
     ${alignY}
     ${align}
+    ${border}
     ${direction}
     ${display}
+    ${flexWrap}
     ${growX}
     ${growY}
     ${grow}
+    ${size}
   `;
 };
 
 const Box = styled.section`
-  ${flex}
+  ${customFlex}
+  ${borderSS}
   ${color}
+  ${flexbox}
   ${layout}
+  ${shadow}
   ${space}
 `;
 

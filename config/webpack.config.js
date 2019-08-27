@@ -86,7 +86,11 @@ module.exports = {
               '@babel/plugin-proposal-class-properties',
               '@babel/plugin-syntax-dynamic-import',
             ],
-            presets: ['@babel/preset-env', '@babel/react'],
+            presets: [
+              '@babel/preset-env',
+              '@babel/react',
+              '@emotion/babel-preset-css-prop',
+            ],
             env: {
               production: {
                 plugins: ['transform-remove-console'],
