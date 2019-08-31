@@ -22,7 +22,7 @@ const data = [
 
 const LocationEcoAliados = () => {
   return (
-    <Box>
+    <Container>
       <Table>
         <Table.Header>
           <Table.Row>
@@ -49,11 +49,19 @@ const LocationEcoAliados = () => {
           })}
         </Table.Body>
       </Table>
-    </Box>
+    </Container>
   );
 };
 
 // ----- Components -----
+
+const Container = styled(Box)(
+  () => `
+    max-width: 100%;
+    overflow: auto;
+    width: 100%;
+  `,
+);
 
 const Table = styled.table(
   ({ utils }) => `
@@ -61,9 +69,10 @@ const Table = styled.table(
     border-spacing: 0px;
     border: 1px solid ${utils.darken('white', 0.05)};
     cursor: default;
+    min-width: 500px;
     overflow: hidden;
     padding: 0;
-    width: 600px;
+    width: 100%;
   `,
 );
 

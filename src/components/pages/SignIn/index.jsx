@@ -19,9 +19,9 @@ const SignIn = function SignIn({ history }) {
   };
 
   return (
-    <Container align="center" grow>
+    <Container align="center" p={3} grow>
       <Logo src="/images/logo.png" alt="Logo" />
-      <Content align="center">
+      <Content align="center" p={3}>
         <Title>Inicia sesión con tu cuenta Eco</Title>
         <Form onSubmit={handleSubmitClick} config={formConfig}>
           {({ values, status, errors, onInputChange, onSubmit }) => {
@@ -79,29 +79,32 @@ SignIn.propTypes = {
 
 const Container = styled(Box)(
   ({ theme }) => `
-    background: linear-gradient(0deg, rgba(193,255,224,1) 0%, rgba(238,255,239,0.45281862745098034) 100%);
     background: rgb(193,255,224);
-    padding: ${theme.space[2]}px;
+    background: linear-gradient(0deg, rgba(193,255,224,1) 0%, rgba(238,255,239,0.45281862745098034) 100%);
     overflow: auto;
+    height: 100vh;
+
+    ${theme.mediaQueries.landscape} {
+      height: auto;
+    }
   `,
 );
 
 const Logo = styled.img(
   ({ theme }) => `
+    height: 100px;
     margin-bottom: ${theme.space[3]}px;
     width: 100px;
-    height: 100px;
   `,
 );
 
 const Content = styled(Box)(
-  ({ theme }) => `
+  () => `
     background-color: white;
     border-radius: 10px;
     box-shadow: 1px 1px 5px 0px rgba(165, 165, 165, 0.5);
     height: 400px;
     max-width: 400px;
-    padding: ${theme.space[3]}px;
     width: 100%;
   `,
 );

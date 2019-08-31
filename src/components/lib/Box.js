@@ -1,5 +1,6 @@
 import { color, layout, space, border as borderSS, flexbox, shadow } from 'styled-system';
 import styled from '@emotion/styled';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 const customFlex = ({
   'align-x': alignXProp,
@@ -7,7 +8,7 @@ const customFlex = ({
   'grow-x': growXProp,
   'grow-y': growYProp,
   align: alignProp,
-  border: borderProp,
+  tborder,
   dir = 'column',
   grow: growProp,
   size: sizeProp,
@@ -20,7 +21,9 @@ const customFlex = ({
   let growY = '';
   let grow = '';
   let size = '';
-  const border = borderProp ? 'border: 1px solid red;' : '';
+  const border = tborder
+    ? `border: 1px solid ${typeof tborder === 'boolean' ? 'red' : tborder};`
+    : '';
   const flexWrap = wrap ? 'flex-wrap: wrap;' : '';
   const display = 'display: flex;';
   const direction = `flex-direction: ${dir};`;
@@ -94,7 +97,7 @@ const customFlex = ({
   `;
 };
 
-const Box = styled.section`
+const Box = styled('section', { shouldForwardProp })`
   ${customFlex}
   ${borderSS}
   ${color}

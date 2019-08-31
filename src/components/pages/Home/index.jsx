@@ -11,20 +11,20 @@ import { LocationEcoAliados, MyProfile } from './pages';
 
 const Home = function Home({ match }) {
   return (
-    <Box align="center" grow>
+    <Container align="center" grow>
       <Header py={3} px={4} dir="row" align-x="space-between" grow-x>
         <Logo src="/images/logo.png" alt="Logo" />
         <ProfileImage size={50} />
       </Header>
-      <Body align-x="space-between" wrap grow>
-        <LeftMenu grow-y>
-          <LeftMenu.Item icon="profile" text="Mi perfil" route={Routes.HOME} />
-          <LeftMenu.Item
+      <Body align-x="space-between" wrap>
+        <Navigation>
+          <Navigation.Item icon="profile" text="Mi perfil" route={Routes.HOME} />
+          <Navigation.Item
             icon="location"
             text="Ubicación de Eco-Aliados"
             route={Routes.LOCATION_ECOALIADOS}
           />
-        </LeftMenu>
+        </Navigation>
         <Content flex={1} p={3}>
           <MainTitle>
             {match.path === Routes.HOME ? 'Mi perfil' : 'Ubicación de Eco-Aliados'}
@@ -32,7 +32,7 @@ const Home = function Home({ match }) {
           {match.path === Routes.HOME ? <MyProfile /> : <LocationEcoAliados />}
         </Content>
       </Body>
-    </Box>
+    </Container>
   );
 };
 
@@ -41,6 +41,17 @@ Home.propTypes = {
 };
 
 // ----- Components -----
+
+const Container = styled(Box)(
+  ({ theme }) => `
+    height: 100vh;
+
+    ${theme.mediaQueries.landscape} {
+      height: auto;
+      overflow: auto;
+    }
+  `,
+);
 
 const Header = styled(Box)(
   () => `
@@ -59,38 +70,48 @@ const Logo = styled.img(
 const Body = styled(Box)(
   ({ theme }) => `
     background-color: white;
-    flex-direction: row;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    width: 100%;
 
-    ${theme.mediaQueries.small} {
-      flex-direction: column;
+    ${theme.mediaQueries.landscape} {
+      height: auto;
+    }
+
+    ${theme.mediaQueries['small-up']} {
+      flex-direction: row;
     }
   `,
 );
 
-const LeftMenu = styled(Box)(
+const Navigation = styled(Box)(
   ({ theme }) => `
     box-shadow: 2px 2px 5px 0px ${theme.colors.gray};
+    flex-direction: row;
+    height: 80px;
+    width: 100%;
 
-    ${theme.mediaQueries.small} {
-      flex-direction: row;
-      height: 80px;
-      width: 100%;
+    ${theme.mediaQueries['small-up']} {
+      flex-direction: column;
+      height: auto;
+      width: auto;
     }
   `,
 );
 
-const LeftMenuItemStyles = createComponentStyles(({ theme }) => ({
+const NavigationItemStyles = createComponentStyles(({ theme }) => ({
   link: `
-    border-bottom: 1px solid ${theme.colors.gray};
-    display: block;
-    height: 120px;
-    width: 120px;
+    border-right: 1px solid ${theme.colors.gray};
+    flex: 1;
+    height: 100%;
+    width: auto;
 
-    ${theme.mediaQueries.small} {
-      border-right: 1px solid ${theme.colors.gray};
-      flex: 1;
-      height: 100%;
-      width: auto;
+    ${theme.mediaQueries['small-up']} {
+      border-bottom: 1px solid ${theme.colors.gray};
+      display: block;
+      height: 120px;
+      width: 120px;
     }
   `,
   box: `
@@ -99,26 +120,30 @@ const LeftMenuItemStyles = createComponentStyles(({ theme }) => ({
     width: 100%;
 
     .eco-icon {
-      font-size: ${theme.fontSizes[6]};
+      font-size: ${theme.fontSizes[5]};
     }
 
-    ${theme.mediaQueries.small} {
+    .eco-text{
+      display: none;
+    }
+
+    ${theme.mediaQueries['small-up']} {
       .eco-icon {
-        font-size: ${theme.fontSizes[5]};
+        font-size: ${theme.fontSizes[6]};
       }
 
       .eco-text{
-        display: none;
+        display: block;
       }
     }
   `,
 }));
 
 // eslint-disable-next-line react/prop-types
-LeftMenu.Item = ({ icon, text, route }) => {
+Navigation.Item = ({ icon, text, route }) => {
   return (
-    <Link to={route} css={LeftMenuItemStyles.link}>
-      <Box align="center" p={2} css={LeftMenuItemStyles.box}>
+    <Link to={route} css={NavigationItemStyles.link}>
+      <Box align="center" p={2} css={NavigationItemStyles.box}>
         <Icon name={icon} color="blues.3" />
         <Text mt={0} color="blue">
           {text}
@@ -132,10 +157,12 @@ const Content = styled(Box)(
   ({ theme }) => `
     flex: 1;
     height: 100%;
+    max-width: 100%;
     overflow: auto;
 
-    ${theme.mediaQueries.small} {
+    ${theme.mediaQueries.landscape} {
       height: auto;
+      overflow: unset;
     }
   `,
 );

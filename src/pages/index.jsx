@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
 import { ThemeProvider } from 'emotion-theming';
-import { styled } from '@diegofrayo/styles';
 
 import ErrorBoundary from 'hocs/ErrorBoundary';
 import { Router } from 'routing';
@@ -14,9 +13,7 @@ const App = () => {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <ErrorBoundary>
-            <MainContainer>
-              <Router />
-            </MainContainer>
+            <Router />
           </ErrorBoundary>
         </ThemeProvider>
       </BrowserRouter>
@@ -25,13 +22,5 @@ const App = () => {
 };
 
 const Wrapper = APP_SETTINGS.environment === 'development' ? AppContainer : Fragment;
-
-const MainContainer = styled.section`
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin: 0 auto;
-`;
 
 export default App;

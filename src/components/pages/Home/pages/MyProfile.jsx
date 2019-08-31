@@ -19,7 +19,7 @@ const MyProfile = () => {
             <Ranking position="25" />
           </Box>
         </Box>
-        <Box py={1} dir="row" px={[null, null, 3]} width={[1, 1, 'auto']} wrap>
+        <Box px={[null, null, 2]} width={[1, 1, 'auto']} dir="row" wrap>
           <Box
             py={1}
             pr={[null, 1]}
@@ -52,12 +52,12 @@ const MyProfile = () => {
           <span>Reconocimientos</span>
         </Title>
         <Separator size={1} />
-        <AwardContainer dir="row" wrap>
+        <Box align-x="flex-start" dir="row" wrap>
           <Award icon="muscle" title="Has reciclado..." />
           <Award icon="check" title="Has reciclado..." />
           <Award icon="rocket" title="Has reciclado..." />
           <Award icon="smile" title="Has reciclado..." />
-        </AwardContainer>
+        </Box>
       </Box>
     </Fragment>
   );
@@ -115,22 +115,22 @@ const StatisticsBox = ({ type, icon, value, text }) => {
   );
 };
 
-const AwardContainer = styled(Box)(
-  ({ theme }) => `
-    justify-content: flex-start;
-
-    ${theme.mediaQueries.small} {
-      justify-content: space-between;
-    }
-  `,
-);
-
 const AwardBox = styled(Box)(
   ({ theme }) => `
     background-color: ${theme.colors.blue};
     box-shadow: 2px 0px 5px 0px ${theme.colors.grays[0]};
     border-radius: 100%;
     cursor: help;
+
+    .eco-icon {
+      font-size: ${theme.fontSizes[5]};
+    }
+
+    ${theme.mediaQueries['small-up']} {
+      .eco-icon{
+        font-size: ${theme.fontSizes[6]};
+      }
+    }
   `,
 );
 
@@ -138,7 +138,7 @@ const AwardBox = styled(Box)(
 const Award = ({ icon, title }) => {
   return (
     <AwardBox p={3} mr={3} mb={2} title={title}>
-      <Icon name={icon} color="white" size={3} />
+      <Icon name={icon} color="white" />
     </AwardBox>
   );
 };
