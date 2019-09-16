@@ -38,7 +38,7 @@ const LocationEcoAliados = () => {
                 <Table.Cell>{item.name}</Table.Cell>
                 <Table.Cell>{item.address}</Table.Cell>
                 <Table.Cell>
-                  <Box dir="row" wrap grow>
+                  <Box dir="row" wrap="true" grow-x>
                     {item.elements.map(element => {
                       return <ElementBadge key={element}>{element}</ElementBadge>;
                     })}

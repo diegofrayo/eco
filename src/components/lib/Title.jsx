@@ -15,27 +15,32 @@ const Titles = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].reduce((result, key) => {
 }, {});
 
 const getFontSize = (fontSize, is) => {
+  if (fontSize) {
+    return fontSize;
+  }
+
   if (is === 'h1') {
-    return fontSize || '2em';
+    return '2em';
   }
 
   if (is === 'h2') {
-    return fontSize || '1.5em';
+    return '1.5em';
   }
 
   if (is === 'h3') {
-    return fontSize || '1.3em';
+    return '1.3em';
   }
 
   if (is === 'h4') {
-    return fontSize || '1.1em';
+    return '1.1em';
   }
 
-  return fontSize || '1em';
+  return '1em';
 };
 
 const Title = ({ is, children, color, fontSize }) => {
   const Component = Titles[is];
+
   return (
     <Component color={color} fontSize={getFontSize(fontSize, is)}>
       {children}
@@ -45,6 +50,7 @@ const Title = ({ is, children, color, fontSize }) => {
 
 Title.propTypes = {
   children: PropTypes.any.isRequired,
+
   is: PropTypes.string,
   color: PropTypes.string,
   fontSize: PropTypes.number,

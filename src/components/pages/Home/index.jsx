@@ -11,12 +11,12 @@ import { LocationEcoAliados, MyProfile } from './pages';
 
 const Home = function Home({ match }) {
   return (
-    <Container align="center" grow>
-      <Header py={3} px={4} dir="row" align-x="space-between" grow-x>
+    <Container grow>
+      <Header py={3} px={4} dir="row" align-x="space-between">
         <Logo src="/images/logo.png" alt="Logo" />
         <ProfileImage size={50} />
       </Header>
-      <Body align-x="space-between" wrap>
+      <Body wrap="true">
         <Navigation>
           <Navigation.Item icon="profile" text="Mi perfil" route={Routes.HOME} />
           <Navigation.Item
@@ -112,6 +112,10 @@ const NavigationItemStyles = createComponentStyles(({ theme }) => ({
       display: block;
       height: 120px;
       width: 120px;
+
+      &:last-child{
+        border-bottom: 0;
+      }
     }
   `,
   box: `

@@ -21,27 +21,26 @@ const SignIn = function SignIn({ history }) {
   return (
     <Container align="center" p={3} grow>
       <Logo src="/images/logo.png" alt="Logo" />
-      <Content align="center" p={3}>
+      <Content align-y="center" p={3}>
         <Title>Inicia sesión con tu cuenta Eco</Title>
         <Form onSubmit={handleSubmitClick} config={formConfig}>
           {({ values, status, errors, onInputChange, onSubmit }) => {
             return (
               <Fragment>
                 <Input
-                  label="Correo electrónico"
                   htmlAttrs={{
                     name: 'email',
                     type: 'email',
                     value: values.email,
                     required: '',
                   }}
-                  onChange={onInputChange}
+                  label="Correo electrónico"
                   icon="email"
                   error={errors.email}
+                  onChange={onInputChange}
                 />
                 <Separator size={1} />
                 <Input
-                  label="Contraseña"
                   htmlAttrs={{
                     name: 'password',
                     type: 'password',
@@ -49,9 +48,10 @@ const SignIn = function SignIn({ history }) {
                     required: '',
                     autoComplete: 'username email',
                   }}
-                  onChange={onInputChange}
+                  label="Contraseña"
                   icon="password"
                   error={errors.password}
+                  onChange={onInputChange}
                 />
                 <Separator size={1} />
                 <Button

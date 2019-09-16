@@ -17,8 +17,8 @@ body {
 
 p,
 a,
-input,
 i,
+input,
 button {
   font-size: 1em;
 }
@@ -39,13 +39,10 @@ ul {
   list-style-type: none;
 }
 
-i {
-  display: inline-block;
-  vertical-align: middle;
-}
-
+i,
 img,
 span {
+  display: inline-block;
   vertical-align: middle;
 }
 
@@ -56,10 +53,6 @@ button {
   font-weight: bold;
   outline: 0;
   padding: 0;
-}
-
-form {
-  width: 100%;
 }
 
 input {

@@ -7,7 +7,7 @@ import { ProfileImage } from '../components';
 const MyProfile = () => {
   return (
     <Fragment>
-      <Box dir="row" wrap grow-x>
+      <Box dir="row" wrap="true" grow-x>
         <Box dir="row" width={[1, 1, 'auto']}>
           <Box p={1} pl="0px">
             <ProfileImage size={100} />
@@ -19,7 +19,7 @@ const MyProfile = () => {
             <Ranking position="25" />
           </Box>
         </Box>
-        <Box px={[null, null, 2]} width={[1, 1, 'auto']} dir="row" wrap>
+        <Box px={[null, null, 2]} width={[1, 1, 'auto']} dir="row" wrap="true">
           <Box
             py={1}
             pr={[null, 1]}
@@ -52,7 +52,7 @@ const MyProfile = () => {
           <span>Reconocimientos</span>
         </Title>
         <Separator size={1} />
-        <Box align-x="flex-start" dir="row" wrap>
+        <Box align-x="flex-start" dir="row" wrap="true">
           <Award icon="muscle" title="Has reciclado..." />
           <Award icon="check" title="Has reciclado..." />
           <Award icon="rocket" title="Has reciclado..." />

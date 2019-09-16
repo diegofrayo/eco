@@ -1,6 +1,5 @@
 import { color, layout, space, border as borderSS, flexbox, shadow } from 'styled-system';
 import styled from '@emotion/styled';
-import shouldForwardProp from '@styled-system/should-forward-prop';
 
 const customFlex = ({
   'align-x': alignXProp,
@@ -59,8 +58,6 @@ const customFlex = ({
   if (growProp) {
     grow = `
       flex: 1;
-      height: 100%;
-      width: 100%;
     `;
   }
 
@@ -97,7 +94,7 @@ const customFlex = ({
   `;
 };
 
-const Box = styled('section', { shouldForwardProp })`
+const Box = styled.section`
   ${customFlex}
   ${borderSS}
   ${color}

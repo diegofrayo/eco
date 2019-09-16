@@ -31,6 +31,7 @@ Input.propTypes = {
   htmlAttrs: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+
   icon: PropTypes.string,
   error: PropTypes.string,
 };
