@@ -59,6 +59,7 @@ const SignIn = function SignIn({ history }) {
                   disabled={status !== Form.STATUS.VALID}
                   loading={status === Form.STATUS.LOADING}
                   onClick={onSubmit}
+                  block
                 >
                   Entrar
                 </Button>

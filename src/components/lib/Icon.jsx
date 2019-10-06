@@ -20,6 +20,8 @@ const ICONS = {
   rocket: 'rocket',
   smile: 'simple-smile',
   work: 'worker',
+  stats: 'pie-chart',
+  support: 'gift',
 };
 
 const Icon = ({ name, size, ...rest }) => {

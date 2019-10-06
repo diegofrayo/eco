@@ -8,7 +8,7 @@ const MyProfile = () => {
   return (
     <Fragment>
       <Box dir="row" wrap="true" grow-x>
-        <Box dir="row" width={[1, 1, 'auto']}>
+        <Box width={[1, 1, 'auto']} dir="row" pr={[null, null, 2]}>
           <Box p={1} pl="0px">
             <ProfileImage size={100} />
           </Box>
@@ -16,16 +16,18 @@ const MyProfile = () => {
             <Text color="blue" fontSize={5} mb={0}>
               Diego Rayo
             </Text>
+            <Points points="6734" />
+            <Separator />
             <Ranking position="25" />
           </Box>
         </Box>
-        <Box px={[null, null, 2]} width={[1, 1, 'auto']} dir="row" wrap="true">
+        <Box width={[1, 1, 'auto']} dir="row" wrap="true">
           <Box
             py={1}
             pr={[null, 1]}
             align-y="center"
             align-x="flex-start"
-            width={[1, 0.5, 'auto']}
+            width={[1, 0.5, 0.5, 'auto']}
           >
             <StatisticsBox type="co2" value="10.098" text="Recuperado" icon="clouds" />
           </Box>
@@ -34,7 +36,7 @@ const MyProfile = () => {
             pl={[null, 1]}
             align-y="center"
             align-x="flex-start"
-            width={[1, 0.5, 'auto']}
+            width={[1, 0.5, 0.5, 'auto']}
           >
             <StatisticsBox
               type="carbon"
@@ -68,7 +70,7 @@ const MyProfile = () => {
 const RankingBadge = styled.span(
   ({ theme }) => `
     background-color: ${theme.colors.red};
-    border-radius: 40%;
+    border-radius: 50%;
     color: white;
     margin-left: ${theme.space[1]}px;
     padding: ${theme.space[0] / 2}px ${theme.space[1]}px;
@@ -85,12 +87,47 @@ const Ranking = ({ position }) => {
   );
 };
 
+const PointsBadge = styled.span(
+  ({ theme }) => `
+    background-color: ${theme.colors.yellow};
+    border-radius: 50%;
+    color: white;
+    margin-left: ${theme.space[1]}px;
+    padding: ${theme.space[0] / 2}px ${theme.space[1]}px;
+  `,
+);
+
+// eslint-disable-next-line react/prop-types
+const Points = ({ points }) => {
+  return (
+    <Text color="black">
+      <span>Puntos</span>
+      <PointsBadge>{points}</PointsBadge>
+    </Text>
+  );
+};
+
 const StatisticsBoxContainer = styled(Box)(
   ({ theme, props }) => `
     background-color: ${props.type === 'co2' ? theme.colors.green : 'orange'};
     box-shadow: 2px 0px 5px 0px ${theme.colors.grays[0]};
     color: ${props.type === 'co2' ? 'white' : 'black'};
-    width: 100%;
+
+    .eco-icon {
+      font-size: ${theme.fontSizes[4]};
+    }
+
+    ${theme.mediaQueries.small} {
+      .eco-icon{
+        font-size: ${theme.fontSizes[6]};
+      }
+    }
+
+    ${theme.mediaQueries.medium} {
+      .eco-icon{
+        font-size: ${theme.fontSizes[7]};
+      }
+    }
   `,
 );
 
@@ -104,12 +141,14 @@ const StatisticsBox = ({ type, icon, value, text }) => {
       dir="row"
       width={[1, 1, 250]}
     >
-      <Box p={1} align="center">
+      <Box px={1} py={2} align="center">
         <Icon name={icon} size={4} />
       </Box>
-      <Box p={1} align-y="center">
-        <Text fontSize={4}>{`${value} Kg`}</Text>
-        <Text fontSize={3}>{text}</Text>
+      <Box px={1} py={2} align-y="center" grow>
+        <Text fontSize={4} ellipsis>{`${value} Kg`}</Text>
+        <Text fontSize={3} ellipsis>
+          {text}
+        </Text>
       </Box>
     </StatisticsBoxContainer>
   );
@@ -126,7 +165,7 @@ const AwardBox = styled(Box)(
       font-size: ${theme.fontSizes[5]};
     }
 
-    ${theme.mediaQueries['small-up']} {
+    ${theme.mediaQueries.small} {
       .eco-icon{
         font-size: ${theme.fontSizes[6]};
       }

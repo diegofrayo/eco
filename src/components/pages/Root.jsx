@@ -13,7 +13,7 @@ const Root = function Root({ history }) {
   });
 
   return (
-    <Box align="center" grow>
+    <Box align="center" grow-x grow-y>
       <Icon name="loading" />
     </Box>
   );

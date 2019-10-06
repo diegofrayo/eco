@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { styled } from '@diegofrayo/styles';
+
 import { Box } from 'components/lib';
 
-const data = [
-  {
-    name: 'Reciclando S.A',
-    address: 'Cra 12 #22-90 Barrio Profesionales',
-    elements: ['PET', 'Aluminio', 'Aceite'],
-  },
-  {
-    name: 'Edeq',
-    address: 'Cra 8 #22-90 Esquina Centro',
-    elements: ['PET', 'Plastico', 'Elementos electronicos'],
-  },
-  {
-    name: 'Fundacion Reciclar',
-    address: 'Cra 16 #10-80 Barrio Granada',
-    elements: ['Carton', 'Tapas de plastico'],
-  },
-];
-
 const LocationEcoAliados = () => {
+  const { current: locations } = useRef([
+    {
+      name: 'Reciclando S.A',
+      address: 'Cra 12 #22-90 Barrio Profesionales',
+      elements: ['PET', 'Aluminio', 'Aceite'],
+    },
+    {
+      name: 'Edeq',
+      address: 'Cra 8 #22-90 Esquina Centro',
+      elements: ['PET', 'Plastico', 'Elementos electronicos'],
+    },
+    {
+      name: 'Fundacion Reciclar',
+      address: 'Cra 16 #10-80 Barrio Granada',
+      elements: ['Carton', 'Tapas de plastico'],
+    },
+  ]);
+
   return (
     <Container>
       <Table>
@@ -32,7 +33,7 @@ const LocationEcoAliados = () => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {data.map(item => {
+          {locations.map(item => {
             return (
               <Table.Row key={item.name}>
                 <Table.Cell>{item.name}</Table.Cell>

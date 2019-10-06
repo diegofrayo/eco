@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { styled, createComponentStyles } from '@diegofrayo/styles';
 import { Link } from 'react-router-dom';
@@ -7,14 +7,39 @@ import { Routes } from 'routing';
 import { Box, Icon, Text } from 'components/lib';
 
 import { ProfileImage } from './components';
-import { LocationEcoAliados, MyProfile } from './pages';
+import { LocationEcoAliados, MyProfile, SupportCauses, Stats } from './pages';
 
 const Home = function Home({ match }) {
+  const { current: subpages } = useRef({
+    [Routes.HOME]: {
+      title: 'Mi perfil',
+      component: MyProfile,
+    },
+    [Routes.LOCATION_ECOALIADOS]: {
+      title: 'Ubicación de Eco-Aliados',
+      component: LocationEcoAliados,
+    },
+    [Routes.STATS]: {
+      title: 'Estadísticas',
+      component: Stats,
+    },
+    [Routes.SUPPORT_CAUSES]: {
+      title: 'Apoya causas',
+      component: SupportCauses,
+    },
+  });
+
+  const CurrentSubpage = subpages[match.path].component;
+
   return (
     <Container grow>
       <Header py={3} px={4} dir="row" align-x="space-between">
-        <Logo src="/images/logo.png" alt="Logo" />
-        <ProfileImage size={50} />
+        <Link to={Routes.HOME}>
+          <Logo src="/images/logo.png" alt="Logo" />
+        </Link>
+        <Link to={Routes.HOME}>
+          <ProfileImage size={50} />
+        </Link>
       </Header>
       <Body wrap="true">
         <Navigation>
@@ -24,12 +49,16 @@ const Home = function Home({ match }) {
             text="Ubicación de Eco-Aliados"
             route={Routes.LOCATION_ECOALIADOS}
           />
+          <Navigation.Item icon="stats" text="Estadísticas" route={Routes.STATS} />
+          <Navigation.Item
+            icon="support"
+            text="Apoya causas"
+            route={Routes.SUPPORT_CAUSES}
+          />
         </Navigation>
         <Content flex={1} p={3}>
-          <MainTitle>
-            {match.path === Routes.HOME ? 'Mi perfil' : 'Ubicación de Eco-Aliados'}
-          </MainTitle>
-          {match.path === Routes.HOME ? <MyProfile /> : <LocationEcoAliados />}
+          <MainTitle>{subpages[match.path].title}</MainTitle>
+          <CurrentSubpage />
         </Content>
       </Body>
     </Container>
@@ -79,7 +108,7 @@ const Body = styled(Box)(
       height: auto;
     }
 
-    ${theme.mediaQueries['small-up']} {
+    ${theme.mediaQueries.small} {
       flex-direction: row;
     }
   `,
@@ -92,7 +121,7 @@ const Navigation = styled(Box)(
     height: 80px;
     width: 100%;
 
-    ${theme.mediaQueries['small-up']} {
+    ${theme.mediaQueries.small} {
       flex-direction: column;
       height: auto;
       width: auto;
@@ -107,7 +136,7 @@ const NavigationItemStyles = createComponentStyles(({ theme }) => ({
     height: 100%;
     width: auto;
 
-    ${theme.mediaQueries['small-up']} {
+    ${theme.mediaQueries.small} {
       border-bottom: 1px solid ${theme.colors.gray};
       display: block;
       height: 120px;
@@ -131,7 +160,7 @@ const NavigationItemStyles = createComponentStyles(({ theme }) => ({
       display: none;
     }
 
-    ${theme.mediaQueries['small-up']} {
+    ${theme.mediaQueries.small} {
       .eco-icon {
         font-size: ${theme.fontSizes[6]};
       }

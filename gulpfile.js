@@ -12,11 +12,9 @@ const HTML_MIN_OPTS = {
   removeRedundantAttributes: true,
 };
 
-let buildPath;
-let environment;
+const buildPath = process.env.BUILD_PATH;
+const environment = argv.prod ? 'production' : 'development';
 
-environment = argv.prod ? 'production' : 'development';
-buildPath = process.env.BUILD_PATH;
 if (!buildPath) throw new Error('Invalid env vars values');
 
 // ----------------------------------

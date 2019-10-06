@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from '@diegofrayo/styles';
+
 import { Box } from 'components/lib';
 
 const ProfileImageElement = styled.img(

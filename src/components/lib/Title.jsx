@@ -3,12 +3,25 @@ import PropTypes from 'prop-types';
 import { color as colorSS, typography, space } from 'styled-system';
 import styled from '@emotion/styled';
 
+const customStyles = ({ ellipsis }) => {
+  if (ellipsis) {
+    return `
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    `;
+  }
+
+  return '';
+};
+
 const Titles = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].reduce((result, key) => {
   // eslint-disable-next-line no-param-reassign
   result[key] = styled[key]`
     ${colorSS}
     ${space}
     ${typography}
+    ${customStyles}
   `;
 
   return result;
@@ -38,11 +51,11 @@ const getFontSize = (fontSize, is) => {
   return '1em';
 };
 
-const Title = ({ is, children, color, fontSize }) => {
+const Title = ({ is, children, color, fontSize, ...rest }) => {
   const Component = Titles[is];
 
   return (
-    <Component color={color} fontSize={getFontSize(fontSize, is)}>
+    <Component color={color} fontSize={getFontSize(fontSize, is)} {...rest}>
       {children}
     </Component>
   );

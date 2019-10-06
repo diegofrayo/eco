@@ -1,4 +1,12 @@
-import { color, layout, space, border as borderSS, flexbox, shadow } from 'styled-system';
+import {
+  color,
+  layout,
+  space,
+  border as borderSS,
+  flexbox,
+  shadow,
+  typography,
+} from 'styled-system';
 import styled from '@emotion/styled';
 
 const customFlex = ({
@@ -10,6 +18,7 @@ const customFlex = ({
   tborder,
   dir = 'column',
   grow: growProp,
+  'no-flex': noFlex,
   size: sizeProp,
   wrap,
 }) => {
@@ -20,12 +29,21 @@ const customFlex = ({
   let growY = '';
   let grow = '';
   let size = '';
+  let flexWrap = '';
+  let display = '';
+  let direction = '';
+
   const border = tborder
     ? `border: 1px solid ${typeof tborder === 'boolean' ? 'red' : tborder};`
     : '';
-  const flexWrap = wrap ? 'flex-wrap: wrap;' : '';
-  const display = 'display: flex;';
-  const direction = `flex-direction: ${dir};`;
+
+  if (!noFlex) {
+    direction = `flex-direction: ${dir};`;
+    display = 'display: flex;';
+    flexWrap = wrap ? 'flex-wrap: wrap;' : '';
+  } else {
+    display = 'display: block;';
+  }
 
   if (dir === 'column') {
     if (alignXProp) {
@@ -102,6 +120,7 @@ const Box = styled.section`
   ${layout}
   ${shadow}
   ${space}
+  ${typography}
 `;
 
 export default Box;
