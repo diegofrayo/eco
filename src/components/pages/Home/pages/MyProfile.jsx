@@ -176,7 +176,7 @@ const AwardBox = styled(Box)(
 // eslint-disable-next-line react/prop-types
 const Award = ({ icon, title }) => {
   return (
-    <AwardBox p={3} mr={3} mb={2} title={title}>
+    <AwardBox p={2} mr={3} mb={2} title={title}>
       <Icon name={icon} color="white" />
     </AwardBox>
   );

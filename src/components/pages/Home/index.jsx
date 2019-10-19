@@ -33,7 +33,7 @@ const Home = function Home({ match }) {
 
   return (
     <Container grow>
-      <Header py={3} px={4} dir="row" align-x="space-between">
+      <Header py={2} px={3} dir="row" align-x="space-between">
         <Link to={Routes.HOME}>
           <Logo src="/images/logo.png" alt="Logo" />
         </Link>

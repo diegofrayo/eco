@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start:all": "cross-env gulp build && node config/webpack.config.dev.server.js",
-    "start": "cross-env npm run link-deps && npm run start:all",
+    "start": "cross-env npm run start:all",
     "build:all": "cross-env gulp clean && webpack --mode production && gulp build --prod",
     "build": "cross-env DISABLE_LINT=true && npm run build:all",
     "lint": "eslint -c eslintrc.json 'src/**/*.{js,jsx}'",
