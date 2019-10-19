@@ -13,7 +13,6 @@ const createColorScale = (length, baseColor, scale) => {
 };
 
 const breakpoints = ['576px', '768px', '992px'];
-const breakpointsNumbers = [576, 768, 992];
 
 const theme = {
   space: [4, 8, 16, 32, 64, 128, 256, 512],
@@ -35,20 +34,13 @@ const theme = {
   breakpoints,
 
   mediaQueries: {
-    small: `@media screen and (min-width: ${breakpointsNumbers[0]}px)`,
-    medium: `@media screen and (min-width: ${breakpointsNumbers[1]}px)`,
-    large: `@media screen and (min-width: ${breakpointsNumbers[2]}px)`,
+    small: `@media screen and (min-width: ${breakpoints[0]})`,
+    medium: `@media screen and (min-width: ${breakpoints[1]})`,
+    large: `@media screen and (min-width: ${breakpoints[2]})`,
 
-    landscape: `@media screen and (max-width: ${
-      breakpoints[1]
+    landscape: `@media screen and (max-device-width: ${
+      breakpoints[2]
     }) and (orientation: landscape)`,
-
-    // 'small-up': `@media screen and (min-width: ${breakpointsNumbers[0] + 1}px)`,
-    // 'medium-portrait': `@media screen and (min-width: ${breakpointsNumbers[0] +
-    //   1}px) and (max-width: ${breakpoints[1]}px)`,
-    // 'medium-landscape': `@media screen and (min-width: ${breakpointsNumbers[1] +
-    //   1}px) and (max-width: ${breakpoints[2]}px)`,
-    // large: `@media screen and (max-width: ${breakpointsNumbers[2] + 1}px)`,
   },
 };
 

@@ -124,6 +124,8 @@ const Navigation = styled(Box)(
     ${theme.mediaQueries.small} {
       flex-direction: column;
       height: auto;
+      max-height: 100%;
+      overflow: auto;
       width: auto;
     }
   `,

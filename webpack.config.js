@@ -22,12 +22,13 @@ module.exports = (env = process.env) => {
         'react-dom': '@hot-loader/react-dom',
         react: require.resolve('react'),
       },
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     },
     module: {
       rules: [
         webpackConfig.babel(isDevelopmentEnv),
+        webpackConfig.typescript(),
         webpackConfig.styles(),
         webpackConfig.eslint(isESLintDisabled),
       ],

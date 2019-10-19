@@ -43,11 +43,16 @@ const CauseStyles = createComponentStyles(({ theme }) => ({
   box: `
     box-shadow: 2px 2px 5px 0px ${theme.colors.grays[1]};
     border-radius: 10px;
-    margin-bottom: ${theme.space[2]}px;
-    margin-right: ${theme.space[2]}px;
+    margin: ${theme.space[2]}px;
     max-width: 275px;
     overflow: hidden;
     width: 100%;
+
+    ${theme.mediaQueries.medium} {
+      margin: 0;
+      margin-bottom: ${theme.space[2]}px;
+      margin-right: ${theme.space[2]}px;
+    }
   `,
   image: `
     display: block;

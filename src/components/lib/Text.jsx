@@ -3,23 +3,13 @@ import PropTypes from 'prop-types';
 import { color, typography, space } from 'styled-system';
 import styled from '@emotion/styled';
 
-const customStyles = ({ ellipsis }) => {
-  if (ellipsis) {
-    return `
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    `;
-  }
-
-  return '';
-};
+import { ellipsis } from 'styles/styled-system';
 
 const TextElement = styled.p`
   ${color}
   ${space}
   ${typography}
-  ${customStyles}
+  ${ellipsis}
 `;
 
 const Text = ({ children, ...rest }) => {

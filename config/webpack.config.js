@@ -24,6 +24,18 @@ module.exports = {
     };
   },
 
+  typescript: () => {
+    return {
+      test: /\.ts(x?)$/,
+      exclude: /node_modules/,
+      use: [
+        {
+          loader: 'ts-loader',
+        },
+      ],
+    };
+  },
+
   entry: isDevelopmentEnv => {
     let entry = ['@babel/polyfill', 'whatwg-fetch'];
 
