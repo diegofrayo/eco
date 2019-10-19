@@ -73,7 +73,12 @@ Home.propTypes = {
 
 const Container = styled(Box)(
   ({ theme }) => `
-    height: 100vh;
+    overflow: auto;
+
+    ${theme.mediaQueries.small} {
+      height: 100vh;
+      overflow: unset;
+    }
 
     ${theme.mediaQueries.landscape} {
       height: auto;
@@ -100,16 +105,16 @@ const Body = styled(Box)(
   ({ theme }) => `
     background-color: white;
     flex-direction: column;
-    flex: 1;
-    height: 100%;
-    width: 100%;
-
-    ${theme.mediaQueries.landscape} {
-      height: auto;
-    }
 
     ${theme.mediaQueries.small} {
       flex-direction: row;
+      flex: 1;
+      height: 100%;
+      width: 100%;
+    }
+
+    ${theme.mediaQueries.landscape} {
+      height: auto;
     }
   `,
 );
@@ -190,10 +195,12 @@ Navigation.Item = ({ icon, text, route }) => {
 
 const Content = styled(Box)(
   ({ theme }) => `
-    flex: 1;
-    height: 100%;
-    max-width: 100%;
-    overflow: auto;
+    ${theme.mediaQueries.small} {
+      flex: 1;
+      height: 100%;
+      max-width: 100%;
+      overflow: auto;
+    }
 
     ${theme.mediaQueries.landscape} {
       height: auto;

@@ -15,6 +15,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <ErrorBoundary>
             <Router />
+            {APP_SETTINGS.environment === 'development' && <WindowSize />}
           </ErrorBoundary>
         </ThemeProvider>
       </BrowserRouter>
@@ -46,7 +47,7 @@ const WindowSize = () => {
         window.innerHeight,
         window.screen.width,
         window.screen.height,
-        window.screen.orientation.type.substring(0, 4),
+        window.screen.orientation ? window.screen.orientation.type.substring(0, 4) : '',
       ]);
     }
     window.addEventListener('resize', updateSize);
@@ -62,7 +63,7 @@ const WindowSize = () => {
       {width >= 576 && width < 768 && <span>sm</span>}
       {width >= 768 && width < 992 && <span>md</span>}
       {width >= 992 && <span>lg</span>}
-      <span>{`|${orientation}`}</span>
+      {orientation && <span>{`|${orientation}`}</span>}
     </div>
   );
 };
