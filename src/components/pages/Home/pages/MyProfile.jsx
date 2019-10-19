@@ -49,7 +49,7 @@ const MyProfile = () => {
       </Box>
       <Separator size={3} />
       <Box>
-        <Title>
+        <Title is="h2">
           <Icon name="award" color="yellows.1" mr={1} />
           <span>Reconocimientos</span>
         </Title>

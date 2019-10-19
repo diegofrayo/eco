@@ -15,7 +15,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <ErrorBoundary>
             <Router />
-            {APP_SETTINGS.environment === 'development' && <WindowSize />}
+            <WindowSize />
           </ErrorBoundary>
         </ThemeProvider>
       </BrowserRouter>
