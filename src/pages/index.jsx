@@ -15,7 +15,6 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <ErrorBoundary>
             <Router />
-            <WindowSize />
           </ErrorBoundary>
         </ThemeProvider>
       </BrowserRouter>
