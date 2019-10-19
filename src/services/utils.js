@@ -1,12 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 
 const API = {
-  createArray(length: number, start: number = 0) {
+  createArray(length, start = 0) {
     return Array.from(Array(length).keys()).map(value => value + start);
   },
 };
 
-export const componentDidMount = (callback: React.EffectCallback) => {
+export const componentDidMount = callback => {
   return React.useEffect(callback, []);
 };
 
