@@ -2,7 +2,7 @@
   "name": "eco",
   "version": "1.0.0",
   "description": "React web application",
-  "homepage": "https://eco-armenia.netlify.com",
+  "homepage": "https://eco-armenia.netlify.app",
   "license": "MIT",
   "main": "src/index.jsx",
   "private": true,
@@ -21,7 +21,7 @@
   "author": {
     "name": "Diego Rayo",
     "email": "diegofrayo@gmail.com",
-    "url": "https://diegofrayo.netlify.com"
+    "url": "https://diegofrayo.netlify.app"
   },
   "repository": {
     "type": "git",
