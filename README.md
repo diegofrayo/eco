@@ -1,7 +1,5 @@
 # eco
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/75e93564-22a7-4416-9dba-ce7377875e6a/deploy-status)](https://app.netlify.com/sites/eco-armenia/deploys)
-
 ## Description
 
 React web application
